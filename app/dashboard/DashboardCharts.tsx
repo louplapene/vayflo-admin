@@ -12,13 +12,13 @@ interface Props {
 }
 
 export default function DashboardCharts({ totalImmeubles, totalDevis, activeTenants }: Props) {
-  // DonnÃ©es illustratives pour montrer la structure (Ã  remplacer par vraies donnÃ©es quand volume > 0)
+  // Données illustratives pour montrer la structure (à remplacer par vraies données quand volume > 0)
   const data = [
     { name: "Oct", tickets: 0, devis: 0 },
     { name: "Nov", tickets: 0, devis: 0 },
-    { name: "DÃ©c", tickets: 0, devis: 0 },
+    { name: "Déc", tickets: 0, devis: 0 },
     { name: "Jan", tickets: 0, devis: 0 },
-    { name: "FÃ©v", tickets: 2, devis: 5 },
+    { name: "Fév", tickets: 2, devis: 5 },
     { name: "Mar", tickets: 12, devis: 29 },
   ];
 
@@ -44,8 +44,8 @@ export default function DashboardCharts({ totalImmeubles, totalDevis, activeTena
       <div className="grid grid-cols-3 gap-3">
         {[
           { label: "Clients actifs", value: activeTenants, color: "#6272f1" },
-          { label: "Immeubles gÃ©rÃ©s", value: totalImmeubles, color: "#10b981" },
-          { label: "Devis gÃ©nÃ©rÃ©s", value: totalDevis, color: "#f59e0b" },
+          { label: "Immeubles gérés", value: totalImmeubles, color: "#10b981" },
+          { label: "Devis générés", value: totalDevis, color: "#f59e0b" },
         ].map((s) => (
           <div key={s.label} className="rounded-lg bg-gray-50 px-3 py-2.5 text-center">
             <p className="text-xl font-bold" style={{ color: s.color }}>{s.value}</p>
