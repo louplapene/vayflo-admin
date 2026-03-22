@@ -87,7 +87,7 @@ async function fetchData(type: ExportType): Promise<Record<string, unknown>[]> {
       return (data || []).map((d) => ({
         prenom: d.prenom, nom: d.nom, email: d.email, role: d.role,
         actif: d.actif ? "Oui" : "Non",
-        client: (d.tenants as { nom: string } | null)?.nom || "",
+        client: (d.tenants as unknown as { nom: string } | null)?.nom || "",
         date_creation: d.cree_le?.slice(0, 10),
       }));
     }
@@ -95,14 +95,14 @@ async function fetchData(type: ExportType): Promise<Record<string, unknown>[]> {
       const { data } = await supabase.from("tickets").select("titre, statut, priorite, cree_le, tenants(nom)").order("cree_le", { ascending: false });
       return (data || []).map((d) => ({
         titre: d.titre, statut: d.statut, priorite: d.priorite,
-        client: (d.tenants as { nom: string } | null)?.nom || "",
+        client: (d.tenants as unknown as { nom: string } | null)?.nom || "",
         date_creation: d.cree_le?.slice(0, 10),
       }));
     }
     case "factures": {
       const { data } = await supabase.from("vayflo_factures").select("numero, objet, montant_ht, taux_tva, statut, date_emission, date_echeance, tenants(nom)").order("date_emission", { ascending: false });
       return (data || []).map((d) => ({
-        numero: d.numero, client: (d.tenants as { nom: string } | null)?.nom || "",
+        numero: d.numero, client: (d.tenants as unknown as { nom: string } | null)?.nom || "",
         objet: d.objet, montant_ht: d.montant_ht,
         tva: (d.montant_ht || 0) * ((d.taux_tva || 20) / 100),
         ttc: (d.montant_ht || 0) * (1 + (d.taux_tva || 20) / 100),
@@ -112,7 +112,7 @@ async function fetchData(type: ExportType): Promise<Record<string, unknown>[]> {
     case "abonnements": {
       const { data } = await supabase.from("vayflo_abonnements").select("plan, prix_ht, frequence, statut, date_debut, date_fin, tenants(nom)").order("cree_le", { ascending: false });
       return (data || []).map((d) => ({
-        client: (d.tenants as { nom: string } | null)?.nom || "",
+        client: (d.tenants as unknown as { nom: string } | null)?.nom || "",
         plan: d.plan, prix_ht: d.prix_ht, frequence: d.frequence, statut: d.statut,
         date_debut: d.date_debut, date_fin: d.date_fin,
       }));
