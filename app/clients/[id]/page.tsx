@@ -81,7 +81,7 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
             { label: "Utilisateurs", value: users?.length || 0, icon: Users, color: "text-vayflo-600 bg-vayflo-50" },
             { label: "Immeubles", value: immeubles?.length || 0, icon: Building2, color: "text-emerald-600 bg-emerald-50" },
             { label: "Tickets", value: tickets?.length || 0, icon: Ticket, color: "text-orange-600 bg-orange-50" },
-            { label: "CA encaissÃ©", value: formatCurrency(totalFacture), icon: FileText, color: "text-green-600 bg-green-50" },
+            { label: "CA encaissé", value: formatCurrency(totalFacture), icon: FileText, color: "text-green-600 bg-green-50" },
           ].map((s) => (
             <div key={s.label} className="stat-card flex items-center gap-3">
               <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg ${s.color}`}>
@@ -127,12 +127,12 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
               </div>
             ) : (
               <div className="rounded-lg bg-purple-50 border border-purple-100 px-4 py-3">
-                <p className="text-sm font-medium text-purple-700">BÃªta-testeur</p>
+                <p className="text-sm font-medium text-purple-700">Bêta-testeur</p>
                 <p className="text-xs text-purple-500">Pas encore d&apos;abonnement payant</p>
               </div>
             )}
             <Link href={`/abonnements?tenant=${id}`} className="mt-4 block text-xs text-vayflo-600 hover:underline">
-              GÃ©rer les abonnements â
+              Gérer les abonnements →
             </Link>
           </div>
 
@@ -193,11 +193,11 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="table-th">NumÃ©ro</th>
+                    <th className="table-th">Numéro</th>
                     <th className="table-th">Objet</th>
                     <th className="table-th">Montant HT</th>
-                    <th className="table-th">Ãmission</th>
-                    <th className="table-th">ÃchÃ©ance</th>
+                    <th className="table-th">Émission</th>
+                    <th className="table-th">Échéance</th>
                     <th className="table-th">Statut</th>
                   </tr>
                 </thead>
@@ -205,7 +205,7 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
                   {(factures || []).map((f) => (
                     <tr key={f.id} className="hover:bg-gray-50">
                       <td className="table-td font-mono text-xs">{f.numero}</td>
-                      <td className="table-td text-gray-500">{f.objet || "â"}</td>
+                      <td className="table-td text-gray-500">{f.objet || "—"}</td>
                       <td className="table-td font-semibold">{formatCurrency(f.montant_ht)}</td>
                       <td className="table-td text-gray-400">{formatDate(f.date_emission)}</td>
                       <td className="table-td text-gray-400">{formatDate(f.date_echeance)}</td>
@@ -222,10 +222,10 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
           )}
         </div>
 
-        {/* Tickets rÃ©cents */}
+        {/* Tickets récents */}
         {(tickets?.length || 0) > 0 && (
           <div className="stat-card">
-            <h2 className="mb-4 text-sm font-semibold text-gray-700">Tickets rÃ©cents</h2>
+            <h2 className="mb-4 text-sm font-semibold text-gray-700">Tickets récents</h2>
             <div className="space-y-2">
               {(tickets || []).slice(0, 5).map((t) => (
                 <div key={t.id} className="flex items-center gap-3 rounded-lg bg-gray-50 px-3 py-2.5">
