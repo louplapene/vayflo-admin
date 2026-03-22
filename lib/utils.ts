@@ -14,7 +14,7 @@ export function formatCurrency(amount: number, currency = "EUR") {
 }
 
 export function formatDate(date: string | Date | null | undefined) {
-  if (!date) return "â";
+  if (!date) return "—";
   return new Intl.DateTimeFormat("fr-FR", {
     day: "2-digit",
     month: "2-digit",
@@ -23,7 +23,7 @@ export function formatDate(date: string | Date | null | undefined) {
 }
 
 export function formatDateRelative(date: string | Date | null | undefined) {
-  if (!date) return "â";
+  if (!date) return "—";
   const d = new Date(date);
   const now = new Date();
   const diffMs = now.getTime() - d.getTime();
@@ -37,17 +37,17 @@ export function formatDateRelative(date: string | Date | null | undefined) {
 
 export const STATUT_FACTURE_LABELS: Record<string, string> = {
   brouillon: "Brouillon",
-  envoyee: "EnvoyÃ©e",
-  payee: "PayÃ©e",
+  envoyee: "Envoyée",
+  payee: "Payée",
   retard: "En retard",
-  annulee: "AnnulÃ©e",
+  annulee: "Annulée",
 };
 
 export const STATUT_ABONNEMENT_LABELS: Record<string, string> = {
   actif: "Actif",
   suspendu: "Suspendu",
-  termine: "TerminÃ©",
-  essai: "PÃ©riode d'essai",
+  termine: "Terminé",
+  essai: "Période d'essai",
 };
 
 export const STATUT_FACTURE_COLORS: Record<string, string> = {
