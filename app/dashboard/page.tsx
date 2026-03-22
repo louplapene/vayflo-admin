@@ -89,9 +89,9 @@ export default async function DashboardPage() {
       bg: "bg-orange-50",
     },
     {
-      label: "MRR estimÃ©",
+      label: "MRR estimé",
       value: formatCurrency(data.mrr),
-      sub: `${data.totalDevis} devis gÃ©nÃ©rÃ©s`,
+      sub: `${data.totalDevis} devis générés`,
       icon: TrendingUp,
       color: "text-green-600",
       bg: "bg-green-50",
@@ -127,11 +127,11 @@ export default async function DashboardPage() {
 
         {/* Charts + Alertes */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* Chart activitÃ© */}
+          {/* Chart activité */}
           <div className="lg:col-span-2 stat-card">
             <div className="mb-4 flex items-center gap-2">
               <Activity className="h-4 w-4 text-gray-400" />
-              <h2 className="text-sm font-semibold text-gray-700">ActivitÃ© tickets (6 derniers mois)</h2>
+              <h2 className="text-sm font-semibold text-gray-700">Activité tickets (6 derniers mois)</h2>
             </div>
             <DashboardCharts
               totalImmeubles={data.totalImmeubles}
@@ -166,7 +166,7 @@ export default async function DashboardPage() {
                         {formatCurrency(f.montant_ht)}
                       </p>
                       <span className={`badge text-xs ${f.statut === "retard" ? "bg-red-100 text-red-600" : "bg-blue-100 text-blue-600"}`}>
-                        {f.statut === "retard" ? "En retard" : "EnvoyÃ©e"}
+                        {f.statut === "retard" ? "En retard" : "Envoyée"}
                       </span>
                     </div>
                   </div>
