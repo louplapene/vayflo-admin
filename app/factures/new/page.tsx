@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import AppShell from "@/components/layout/AppShell";
 import { supabaseAdmin } from "@/lib/supabase";
 import { ArrowLeft } from "lucide-react";
