@@ -8,6 +8,7 @@ const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "louplapene@gmail.com")
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Pages publiques
   if (pathname.startsWith("/login") || pathname.startsWith("/_next") || pathname.startsWith("/favicon")) {
     return NextResponse.next();
   }
@@ -22,8 +23,8 @@ export async function middleware(request: NextRequest) {
     {
       cookies: {
         getAll() { return request.cookies.getAll(); },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => {
+        setAll(cookiesToSet: { name: string; value: string; options?: Record<string, unknown> }[]) {
+          cookiesToSet.forEach(({ name, value, options }: { name: string; value: string; options?: Record<string, unknown> }) => {
             request.cookies.set(name, value);
             response.cookies.set(name, value, options);
           });
