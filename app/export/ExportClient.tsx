@@ -18,28 +18,28 @@ const EXPORTS = [
   {
     id: "users" as ExportType,
     label: "Utilisateurs",
-    description: "PrÃ©nom, nom, email, rÃ´le, tenant, statut",
+    description: "Prénom, nom, email, rôle, tenant, statut",
     icon: Users,
     color: "text-emerald-600 bg-emerald-50",
   },
   {
     id: "tickets" as ExportType,
     label: "Tickets",
-    description: "Titre, statut, prioritÃ©, tenant, dates",
+    description: "Titre, statut, priorité, tenant, dates",
     icon: Ticket,
     color: "text-orange-600 bg-orange-50",
   },
   {
     id: "factures" as ExportType,
     label: "Factures",
-    description: "NumÃ©ro, client, montant HT, TTC, statut, dates",
+    description: "Numéro, client, montant HT, TTC, statut, dates",
     icon: FileText,
     color: "text-blue-600 bg-blue-50",
   },
   {
     id: "abonnements" as ExportType,
     label: "Abonnements",
-    description: "Client, plan, tarif, frÃ©quence, statut, dates",
+    description: "Client, plan, tarif, fréquence, statut, dates",
     icon: CreditCard,
     color: "text-purple-600 bg-purple-50",
   },
@@ -164,7 +164,7 @@ export default function ExportClient() {
               }`}
             >
               {f === "excel" ? <FileSpreadsheet className="h-4 w-4" /> : <FileText className="h-4 w-4" />}
-              {f === "csv" ? "CSV (sÃ©parateur ;)" : "Excel (.xlsx)"}
+              {f === "csv" ? "CSV (séparateur ;)" : "Excel (.xlsx)"}
             </button>
           ))}
         </div>
